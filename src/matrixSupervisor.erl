@@ -6,7 +6,7 @@
 %%% @end
 %%% Created : 21. May 2021 14:39
 %%%-------------------------------------------------------------------
--module(matrixSupervisior).
+-module(matrixSupervisor).
 -author("Nadavash").
 
 %% API
@@ -14,8 +14,8 @@
 
 restarter() ->
   process_flag(trap_exit, true),
-  Pid = spawn_link(matrixServer, listen, []),
-  register(mServer, Pid),
+  Pid = spawn_link(matrix_server, listen, []),
+  register(matrix_server, Pid),
   receive
     {'EXIT', Pid, normal} -> ok; % no crash
     {'EXIT', Pid, shutdown} -> ok; % no crash
